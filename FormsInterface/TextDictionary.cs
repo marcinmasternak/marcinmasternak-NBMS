@@ -31,7 +31,7 @@ namespace FormsInterface
             {
                 return textDict[key];
             }
-            return "no key found";
+            return null;
         }
     }
 }

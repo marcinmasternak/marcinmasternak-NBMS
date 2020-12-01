@@ -44,7 +44,7 @@ namespace FormsInterface
                 {
                     myForm.SendMessage("Length succesfully validated : " + sms.Content.Length);
                     sms.ExpandText(myForm);
-                    myForm.UpdateTextBox(PrintMessage(sms));
+                    myForm.UpdateTextBox(sms.PrintMessage());
                 }
                 else
                 {
@@ -60,91 +60,24 @@ namespace FormsInterface
                                     "Please enter 10 to 15 digits optionally " +
                                     " preceded by \"+\" sign or \"00\"" + " \nSMS sender :  " + sms.Sender);
 
-
-
         }
 
-        //Divides body of the message into fields Sender and Content based on separator strings
-       
-        /*
-        public string SplitBody(string body, Sms sms)
-        {
-            var result = body.Split(new string[] { "Sender", "sender", "SENDER" }, 2, StringSplitOptions.None);
-            if (result.Length < 2)
-                return "Error: Message Sender not specified!";
-            else
-            {
-                var messageTab = result[1].Split(new string[] { "Message Text", "Message text", "message text", "MESSAGE TEXT" }, 2, StringSplitOptions.None);
-                if (messageTab.Length < 2)
-                    return "Error: No message text entered, or \"Message Text\" delimiter missing!";
-                sms.Sender = messageTab[0].Trim(new Char[] { ' ', ':', '-', '\n' });
-                sms.Sender = messageTab[1].Trim(new Char[] { ' ', ':', '-', '\n' });
-                //for (int i = 0; i < messageTab.Length; i++)
-                //{
-                //    MessageContent.Add(messageTab[i].Trim(new Char[] { ' ', ':', '-', '\n' }));
-                //}
-                return null;
-            }
-        }
-
-        **/
-
-        //Generates string for message detail preview in the form textbox.
-           //SMS atributes: { type, header ,sender, content }
-
-        //"Message type:         ", "\nMessage header:    ",
-            //                                                "\nSender:                        ",
-           //                                                 "\n------------------------- Message Text ----------------------:\n\n"
+      
         public string PrintMessage(Sms sms)
         {
             string outputString = "";
             outputString += "Message type:         " + sms.Type +
-                            "\nMessage header:    " + sms.Header +
-                            "\nSender:                        " + sms.Sender +
-                            "\n------------------------- Message Text ----------------------:\n\n" + sms.Content;
+                            "\n\nMessage header:    " + sms.Header +
+                            "\n\nSender:                        " + sms.Sender +
+                            "\n\n------------------------- Message Text ----------------------:\n\n" + sms.Content;
             return outputString;
         }
 
-        //Checks that sender field contains valid international phone number
-        //Sanitizes and re-formats the sender string and returns the value to the MessageFields list for later use.
-        public bool ValidateSender(string sender)
-        {
-            sender = sender.Trim(' ');
-            string sanitizedSender = String.Join("", sender.Split('-', ' ','/'));
-            if (Regex.IsMatch(sanitizedSender, "^[(\\+)0(00)]?[0-9]{10,15}$"))
-            {
-                sanitizedSender = sanitizedSender.TrimStart('0', '+');
-                sanitizedSender = sanitizedSender.Insert(2, " ");
-                sanitizedSender = sanitizedSender.Insert(0, "+");
-                MessageContent[2] = sanitizedSender;
-                return true;
-            }
-                return false;
-        }
+        
+        
 
-        public bool ValidateText(string content)
-        {
-            int length = content.Length;
-            if ( length > 0 && length <= 140 )
-                return true;
-            return false;
-        }
+        
 
-        string ExpandText(string content, Form1 myForm)
-        {
-
-            var matches = Regex.Matches(content, "<.{2,10}>");     //finds any occurance of text in  <   >  brackets
-            foreach (var match in matches)
-            {
-                string item = match.ToString();
-                string itemTrimmed = item.Trim('<', '>');
-                string searchResult = myForm.textDictionary.SearchDict(itemTrimmed);
-                if (searchResult != null)
-                {
-                    content = content.Replace(item, itemTrimmed + " <" + searchResult + ">");
-                }
-            }
-            return content;
-        }
+       
     }
 }

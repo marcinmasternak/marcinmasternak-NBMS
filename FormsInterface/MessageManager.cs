@@ -48,7 +48,7 @@ namespace FormsInterface
             return null;
         }
 
-       // public abstract string[] SplitBody(string Body);
+        public abstract string[] SplitBody(string Body);
       
       
     }

@@ -78,6 +78,16 @@ namespace FormsInterface
             }
             return Content;
         }
+
+        public string PrintMessage()
+        {
+            string outputString = "";
+            outputString += "Message type:         " + Type +
+                            "\n\nMessage header:    " + Header +
+                            "\n\nSender:                        " + Sender +
+                            "\n\n------------------------- Message Text ----------------------:\n\n" + Content;
+            return outputString;
+        }
     }
 
 
