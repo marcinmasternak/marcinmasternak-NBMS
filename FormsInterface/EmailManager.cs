@@ -12,7 +12,7 @@ namespace FormsInterface
         {
 
         }
-        public override string SplitBody(string body)
+        public string SplitBody(string body)
         {
             var result = body.Split(new string[] { "Sender", "sender", "SENDER" }, 2, StringSplitOptions.None);
             if (result.Length < 2)

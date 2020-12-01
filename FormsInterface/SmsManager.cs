@@ -29,26 +29,28 @@ namespace FormsInterface
              * 
              * */
             string message;
-            MessageContent.Add("SMS");
-            MessageContent.Add(_header.ToUpper());
-            message = SplitBody(_body);
+            MessageContent.Add("SMS");                                                //<  ----- done
+            MessageContent.Add(_header.ToUpper());                                    //<  ----- done
+            message = sms.SplitBody(_body);
             if (message != null)
             {
                 myForm.SendMessage(message);
                 return;
             }
-            if (ValidateSender(MessageContent[2]) == true)
+            if (sms.ValidateSender() == true)
             {
-                if (ValidateText(MessageContent[3]) == true)
+                myForm.SendMessage("This is the validated sender from sms object: " + sms.Sender);
+                if (sms.ValidateText() == true)
                 {
-                    MessageContent[3] = ExpandText(MessageContent[3], myForm);
-                    myForm.UpdateTextBox(PrintMessage());
+                    myForm.SendMessage("Length succesfully validated : " + sms.Content.Length);
+                    sms.ExpandText(myForm);
+                    myForm.UpdateTextBox(PrintMessage(sms));
                 }
                 else
                 {
                     myForm.SendMessage("Error!\nInvalid message text length!\n" +
                                          "Must be between 1 and 140 characters.\n" +
-                                         MessageContent[3].Length + " characters detected.");
+                                         sms.Content.Length + " characters detected.");
 
                 }
             }
@@ -56,14 +58,16 @@ namespace FormsInterface
             else
                 myForm.SendMessage("Error!\nInvalid phone number format!\n" +
                                     "Please enter 10 to 15 digits optionally " +
-                                    " preceded by \"+\" sign or \"00\"");
+                                    " preceded by \"+\" sign or \"00\"" + " \nSMS sender :  " + sms.Sender);
 
 
 
         }
 
         //Divides body of the message into fields Sender and Content based on separator strings
-        public override string SplitBody(string body)
+       
+        /*
+        public string SplitBody(string body, Sms sms)
         {
             var result = body.Split(new string[] { "Sender", "sender", "SENDER" }, 2, StringSplitOptions.None);
             if (result.Length < 2)
@@ -73,23 +77,31 @@ namespace FormsInterface
                 var messageTab = result[1].Split(new string[] { "Message Text", "Message text", "message text", "MESSAGE TEXT" }, 2, StringSplitOptions.None);
                 if (messageTab.Length < 2)
                     return "Error: No message text entered, or \"Message Text\" delimiter missing!";
-                for (int i = 0; i < messageTab.Length; i++)
-                {
-                    MessageContent.Add(messageTab[i].Trim(new Char[] { ' ', ':', '-', '\n' }));
-                }
+                sms.Sender = messageTab[0].Trim(new Char[] { ' ', ':', '-', '\n' });
+                sms.Sender = messageTab[1].Trim(new Char[] { ' ', ':', '-', '\n' });
+                //for (int i = 0; i < messageTab.Length; i++)
+                //{
+                //    MessageContent.Add(messageTab[i].Trim(new Char[] { ' ', ':', '-', '\n' }));
+                //}
                 return null;
             }
         }
 
+        **/
+
         //Generates string for message detail preview in the form textbox.
-        public string PrintMessage()
+           //SMS atributes: { type, header ,sender, content }
+
+        //"Message type:         ", "\nMessage header:    ",
+            //                                                "\nSender:                        ",
+           //                                                 "\n------------------------- Message Text ----------------------:\n\n"
+        public string PrintMessage(Sms sms)
         {
             string outputString = "";
-            for (int i = 0; i < MessageFields.Count; i++)
-            {
-                outputString += MessageFieldsLong[i];
-                outputString += MessageContent[i] + "\n";
-            }
+            outputString += "Message type:         " + sms.Type +
+                            "\nMessage header:    " + sms.Header +
+                            "\nSender:                        " + sms.Sender +
+                            "\n------------------------- Message Text ----------------------:\n\n" + sms.Content;
             return outputString;
         }
 
