@@ -19,7 +19,7 @@ namespace FormsInterface
         List<string> MessageFieldsLong = new List<string> { "Message type:         ", "\nMessage header:    ",
                                                             "\nSender:                        ",
                                                             "\n------------------------- Message Text ----------------------:\n\n" };
-        //test commit
+        //test commitrtyrteyertyerty
         List<string> MessageContent = new List<string>();
         public SmsManager(string _header, string _body, Form1 myForm)
         {
