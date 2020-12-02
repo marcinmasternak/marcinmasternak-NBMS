@@ -84,7 +84,7 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="TrendingList.cs" />
+    <Compile Include="ListHolder.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MessageManager1.cs" />
     <Compile Include="TemplateGenerator.cs" />

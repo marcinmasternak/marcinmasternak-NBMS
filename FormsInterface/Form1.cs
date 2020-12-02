@@ -14,9 +14,9 @@ namespace FormsInterface
     {
         public TemplateGenerator template = new TemplateGenerator();
         public TextDictionary textDictionary = new TextDictionary();
-        public TrendingList _trendingList;
+        public ListHolder _trendingList;
 
-        public Form1(TrendingList trendingList)
+        public Form1(ListHolder trendingList)
         {
            
             InitializeComponent();
@@ -93,7 +93,7 @@ namespace FormsInterface
            
         }
 
-        public void getTrending(TrendingList list) 
+        public void getTrending(ListHolder list) 
         {
             _trendingList = list;
         }

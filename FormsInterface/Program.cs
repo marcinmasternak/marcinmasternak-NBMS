@@ -18,7 +18,7 @@ namespace FormsInterface
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            TrendingList trendingList = new TrendingList();
+            ListHolder trendingList = new ListHolder();
             Form1 myForm = new Form1(trendingList);
             //myForm.getTrending(trendingList);
 

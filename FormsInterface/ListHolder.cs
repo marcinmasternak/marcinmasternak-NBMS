@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace FormsInterface
 {
-    public class TrendingList
+    public class ListHolder
     {
         Dictionary<string, int> trendingDictionary = new Dictionary<string, int>();
         
-        public TrendingList()
+        public ListHolder()
         {
             
         }
@@ -26,15 +26,16 @@ namespace FormsInterface
             }
         }
 
-        public string getItems()
+        public List<string[]> getItems()
         {
-            string retString = "";
+            List<string[]> HashRowList = new List<string[]>();
             foreach (KeyValuePair<string, int> tagItem in trendingDictionary.OrderByDescending(key => key.Value) )
             {
-                retString += tagItem.Value +"   " + tagItem.Key +"\n";
+                HashRowList.Add(new string[2] { tagItem.Key, tagItem.Value.ToString() } ); 
+                        //= tagItem.Value +"   " + tagItem.Key +"\n";
             }
                 
-            return retString;
+            return HashRowList;
         }
 
 

@@ -12,16 +12,13 @@ namespace FormsInterface
 {
     public partial class Form2 : Form
     {
-        TrendingList _trendingList;
-        public Form2(TrendingList trendingList)
+        ListHolder _trendingList;
+        public Form2(ListHolder trendingList)
         {
             InitializeComponent();
             _trendingList = trendingList;
-            listBox1.Items.Add(_trendingList.getItems());
-            richTextBox1.Text += _trendingList.getItems() +"\n";
-            var row = new String[2] {"Hashtffffffff aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaag", "1" };
-            for (int i=0; i<30; i++)
-                listView1.Items.Add(new ListViewItem(row));
+            fillTrendingList();
+           
 
         }
 
@@ -36,7 +33,7 @@ namespace FormsInterface
 
         }
 
-        public void getTrending(TrendingList list)
+        public void getTrending(ListHolder list)
         {
             _trendingList = list;
         }
@@ -69,6 +66,15 @@ namespace FormsInterface
         private void listView1_SelectedIndexChanged_2(object sender, EventArgs e)
         {
 
+        }
+
+        public void fillTrendingList()
+        {
+            //listBox1.Items.Add(_trendingList.getItems());
+            //richTextBox1.Text += _trendingList.getItems() + "\n";
+            var row = new String[2] { "Hashtffffffff aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaag", "1" };
+            foreach(var item in _trendingList.getItems())
+                listView1.Items.Add(new ListViewItem(item));
         }
     }
 }
