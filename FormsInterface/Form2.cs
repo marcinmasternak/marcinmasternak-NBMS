@@ -24,8 +24,7 @@ namespace FormsInterface
 
         private void label1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(_trendingList.getItems());
-            richTextBox1.Text += _trendingList.getItems() + "/n";
+            
         }
 
         private void Form2_Load(object sender, EventArgs e)
