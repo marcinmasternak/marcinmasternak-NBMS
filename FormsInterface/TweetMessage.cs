@@ -107,5 +107,16 @@ namespace FormsInterface
             tags = new HashSet<string>(tags).ToList();
             return tags;
         }
+
+        public List<string> FindTweeterIds()
+        {
+            List<string> ids = new List<string>();
+            foreach (var match in Regex.Matches(Content, "@[a-zA-Z0-9_]{4,15}"))
+            {
+                ids.Add(match.ToString());
+            }
+            ids = new HashSet<string>(ids).ToList();
+            return ids;
+        }
     }
 }

@@ -14,13 +14,13 @@ namespace FormsInterface
     {
         public TemplateGenerator template = new TemplateGenerator();
         public TextDictionary textDictionary = new TextDictionary();
-        public ListHolder _trendingList;
+        public ListHolder _listHolder;
 
-        public Form1(ListHolder trendingList)
+        public Form1(ListHolder listHolder)
         {
            
             InitializeComponent();
-            _trendingList = trendingList;
+            _listHolder = listHolder;
         }
 
         private void boxDisplay_Enter(object sender, EventArgs e)
@@ -93,7 +93,7 @@ namespace FormsInterface
 
         public void getTrending(ListHolder list) 
         {
-            _trendingList = list;
+            _listHolder = list;
         }
 
         private void label2_Click(object sender, EventArgs e)

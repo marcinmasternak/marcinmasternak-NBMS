@@ -9,7 +9,8 @@ namespace FormsInterface
     public class ListHolder
     {
         Dictionary<string, int> trendingDictionary = new Dictionary<string, int>();
-        
+        Dictionary<string, int> mentionsDictionary = new Dictionary<string, int>();
+
         public ListHolder()
         {
             
@@ -26,7 +27,18 @@ namespace FormsInterface
             }
         }
 
-        public List<string[]> getItems()
+        public void addMention(List<string> mentionsList)
+        {
+            foreach (string id in mentionsList)
+            {
+                if (mentionsDictionary.ContainsKey(id))
+                    mentionsDictionary[id]++;
+                else
+                    mentionsDictionary[id] = 1;
+            }
+        }
+
+        public List<string[]> getTrendingTags()
         {
             List<string[]> HashRowList = new List<string[]>();
             foreach (KeyValuePair<string, int> tagItem in trendingDictionary.OrderByDescending(key => key.Value) )
@@ -38,6 +50,17 @@ namespace FormsInterface
             return HashRowList;
         }
 
+        public List<string[]> getMentions()
+        {
+            List<string[]> MentionsRowList = new List<string[]>();
+            foreach (KeyValuePair<string, int> mentionsItem in mentionsDictionary.OrderByDescending(key => key.Value))
+            {
+                MentionsRowList.Add(new string[2] { mentionsItem.Key, mentionsItem.Value.ToString() });
+                //= tagItem.Value +"   " + tagItem.Key +"\n";
+            }
+
+            return MentionsRowList;
+        }
 
 
 

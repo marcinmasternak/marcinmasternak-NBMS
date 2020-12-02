@@ -108,7 +108,8 @@ namespace FormsInterface
                     tweet.ExpandText(myForm);
                     myForm.UpdateTextBox(tweet.PrintMessage());
                     System.IO.File.AppendAllText("my_json_file.txt", tweet.SerializeToJson());
-                    myForm._trendingList.addHashTag(tweet.FindHashtags());
+                    myForm._listHolder.addHashTag(tweet.FindHashtags());
+                    myForm._listHolder.addMention(tweet.FindTweeterIds());
                 }
                 else
                 {

@@ -12,12 +12,13 @@ namespace FormsInterface
 {
     public partial class Form2 : Form
     {
-        ListHolder _trendingList;
-        public Form2(ListHolder trendingList)
+        ListHolder _listHolder;
+        public Form2(ListHolder listHolder)
         {
             InitializeComponent();
-            _trendingList = trendingList;
+            _listHolder = listHolder;
             fillTrendingList();
+            fillMentionsList();
            
 
         }
@@ -30,11 +31,6 @@ namespace FormsInterface
         private void Form2_Load(object sender, EventArgs e)
         {
 
-        }
-
-        public void getTrending(ListHolder list)
-        {
-            _trendingList = list;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -71,9 +67,18 @@ namespace FormsInterface
         {
             //listBox1.Items.Add(_trendingList.getItems());
             //richTextBox1.Text += _trendingList.getItems() + "\n";
-            var row = new String[2] { "Hashtffffffff aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaag", "1" };
-            foreach(var item in _trendingList.getItems())
+            var row = new String[2];
+            foreach(var item in _listHolder.getTrendingTags())
                 listView1.Items.Add(new ListViewItem(item));
+        }
+
+        public void fillMentionsList()
+        {
+            //listBox1.Items.Add(_trendingList.getItems());
+            //richTextBox1.Text += _trendingList.getItems() + "\n";
+            var row = new String[2];
+            foreach (var item in _listHolder.getMentions())
+                listView2.Items.Add(new ListViewItem(item));
         }
     }
 }
