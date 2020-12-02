@@ -37,7 +37,7 @@ namespace FormsInterface
                     CreateSms(header, body, myForm);
                     break;
                 case "T":
-                    //TweetManager tweetManager = new TweetManager(header, body, myForm);
+                    CreateTweet(header, body, myForm);
                     break;
                 case "E":
                     // EmailManager emailManager = new EmailManager(header, body, myForm);
@@ -85,9 +85,45 @@ namespace FormsInterface
                                     " preceded by \"+\" sign or \"00\"" + " \nSMS sender :  " + sms.Sender);
 
         }
-       
 
-       
+        static void CreateTweet(string _header, string _body, Form1 myForm)
+        {
+
+            TweetMessage tweet = new TweetMessage();
+            tweet.Header = _header.ToUpper();
+
+            string message;
+            message = tweet.SplitBody(_body);
+            if (message != null)
+            {
+                myForm.SendMessage(message);
+                return;
+            }
+            if (tweet.ValidateSender() == true)
+            {
+                myForm.SendMessage("This is the validated sender from sms object: " + tweet.Sender);
+                if (tweet.ValidateText() == true)
+                {
+                    myForm.SendMessage("Length succesfully validated : " + tweet.Content.Length);
+                    tweet.ExpandText(myForm);
+                    myForm.UpdateTextBox(tweet.PrintMessage());
+                    System.IO.File.AppendAllText("my_json_file.txt", tweet.SerializeToJson());
+                    myForm._trendingList.addHashTag(tweet.FindHashtags());
+                }
+                else
+                {
+                    myForm.SendMessage("Error!\nInvalid message text length!\n" +
+                                         "Must be between 1 and 140 characters.\n" +
+                                         tweet.Content.Length + " characters detected.");
+                }
+            }
+
+            else
+                myForm.SendMessage("Error!\nInvalid Sender / Tweeter ID format!\n" +
+                                    "ID must start with \"@\" followed by 4 to 15 alphanumeric characters");
+
+        }
+
 
 
 

@@ -19,6 +19,9 @@ namespace FormsInterface
             _trendingList = trendingList;
             listBox1.Items.Add(_trendingList.getItems());
             richTextBox1.Text += _trendingList.getItems() +"\n";
+            var row = new String[2] {"Hashtffffffff aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaag", "1" };
+            for (int i=0; i<30; i++)
+                listView1.Items.Add(new ListViewItem(row));
 
         }
 
@@ -49,6 +52,21 @@ namespace FormsInterface
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged_2(object sender, EventArgs e)
         {
 
         }

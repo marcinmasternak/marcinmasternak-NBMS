@@ -80,7 +80,7 @@ namespace FormsInterface
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            _trendingList.addHashTag("Test taaaaaaaaaaaaaaaaag  aaaaaaa aaaaaaaaaa ggggggggg");
+           
             this.Close();
             textBoxHeader.Clear();
             textboxBody.Clear();

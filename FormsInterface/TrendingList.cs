@@ -15,20 +15,23 @@ namespace FormsInterface
             
         }
 
-        public void addHashTag(string hashTag)
+        public void addHashTag(List<string> hashTagList)
         {
-            if (trendingDictionary.ContainsKey(hashTag))
-                trendingDictionary[hashTag]++;
-            else
-                trendingDictionary[hashTag] = 1;
+            foreach (string tag in hashTagList)
+            {
+                if (trendingDictionary.ContainsKey(tag))
+                    trendingDictionary[tag]++;
+                else
+                    trendingDictionary[tag] = 1;
+            }
         }
 
         public string getItems()
         {
             string retString = "";
-            foreach (KeyValuePair<string, int> tagItem in trendingDictionary)
+            foreach (KeyValuePair<string, int> tagItem in trendingDictionary.OrderByDescending(key => key.Value) )
             {
-                retString += tagItem.Key;
+                retString += tagItem.Value +"   " + tagItem.Key +"\n";
             }
                 
             return retString;
