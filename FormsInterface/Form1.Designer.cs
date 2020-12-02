@@ -50,18 +50,18 @@
             this.boxEntry.Controls.Add(this.label2);
             this.boxEntry.Controls.Add(this.label1);
             this.boxEntry.Controls.Add(this.textBoxHeader);
-            this.boxEntry.Location = new System.Drawing.Point(12, 12);
+            this.boxEntry.Location = new System.Drawing.Point(8, 9);
             this.boxEntry.Name = "boxEntry";
-            this.boxEntry.Size = new System.Drawing.Size(480, 600);
+            this.boxEntry.Size = new System.Drawing.Size(336, 450);
             this.boxEntry.TabIndex = 0;
             this.boxEntry.TabStop = false;
             this.boxEntry.Text = "Message Entry";
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(32, 537);
+            this.btnClear.Location = new System.Drawing.Point(22, 402);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(82, 31);
+            this.btnClear.Size = new System.Drawing.Size(58, 23);
             this.btnClear.TabIndex = 5;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -69,9 +69,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(347, 537);
+            this.button1.Location = new System.Drawing.Point(243, 402);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 31);
+            this.button1.Size = new System.Drawing.Size(69, 23);
             this.button1.TabIndex = 4;
             this.button1.Text = "Process";
             this.button1.UseVisualStyleBackColor = true;
@@ -79,10 +79,10 @@
             // 
             // textboxBody
             // 
-            this.textboxBody.Location = new System.Drawing.Point(6, 136);
+            this.textboxBody.Location = new System.Drawing.Point(4, 102);
             this.textboxBody.Name = "textboxBody";
             this.textboxBody.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.textboxBody.Size = new System.Drawing.Size(468, 374);
+            this.textboxBody.Size = new System.Drawing.Size(326, 281);
             this.textboxBody.TabIndex = 3;
             this.textboxBody.Text = "";
             this.textboxBody.TextChanged += new System.EventHandler(this.textboxBody_TextChanged);
@@ -90,28 +90,29 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 117);
+            this.label2.Location = new System.Drawing.Point(1, 84);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 16);
+            this.label2.Size = new System.Drawing.Size(34, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Body";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 40);
+            this.label1.Location = new System.Drawing.Point(1, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 16);
+            this.label1.Size = new System.Drawing.Size(48, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Header";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBoxHeader
             // 
-            this.textBoxHeader.Location = new System.Drawing.Point(6, 59);
+            this.textBoxHeader.Location = new System.Drawing.Point(4, 51);
             this.textBoxHeader.MaxLength = 10;
             this.textBoxHeader.Name = "textBoxHeader";
-            this.textBoxHeader.Size = new System.Drawing.Size(140, 22);
+            this.textBoxHeader.Size = new System.Drawing.Size(78, 21);
             this.textBoxHeader.TabIndex = 0;
             this.textBoxHeader.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -119,9 +120,9 @@
             // 
             this.boxDisplay.Controls.Add(this.button2);
             this.boxDisplay.Controls.Add(this.textBoxPreview);
-            this.boxDisplay.Location = new System.Drawing.Point(514, 12);
+            this.boxDisplay.Location = new System.Drawing.Point(360, 9);
             this.boxDisplay.Name = "boxDisplay";
-            this.boxDisplay.Size = new System.Drawing.Size(480, 600);
+            this.boxDisplay.Size = new System.Drawing.Size(336, 450);
             this.boxDisplay.TabIndex = 1;
             this.boxDisplay.TabStop = false;
             this.boxDisplay.Text = "Message Preview";
@@ -129,33 +130,35 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(355, 537);
+            this.button2.Location = new System.Drawing.Point(217, 402);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 31);
+            this.button2.Size = new System.Drawing.Size(101, 23);
             this.button2.TabIndex = 5;
-            this.button2.Text = "Save";
+            this.button2.Text = "End session";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBoxPreview
             // 
-            this.textBoxPreview.Location = new System.Drawing.Point(6, 136);
+            this.textBoxPreview.Location = new System.Drawing.Point(4, 102);
             this.textBoxPreview.Name = "textBoxPreview";
             this.textBoxPreview.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.textBoxPreview.Size = new System.Drawing.Size(468, 374);
+            this.textBoxPreview.Size = new System.Drawing.Size(314, 281);
             this.textBoxPreview.TabIndex = 0;
             this.textBoxPreview.Text = "";
             this.textBoxPreview.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 616);
+            this.ClientSize = new System.Drawing.Size(699, 460);
             this.Controls.Add(this.boxDisplay);
             this.Controls.Add(this.boxEntry);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Napier Bank Messaging Service";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.boxEntry.ResumeLayout(false);

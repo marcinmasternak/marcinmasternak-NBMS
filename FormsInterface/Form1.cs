@@ -80,8 +80,6 @@ namespace FormsInterface
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-           
-            this.Close();
             textBoxHeader.Clear();
             textboxBody.Clear();
             textBoxPreview.Clear();
@@ -96,6 +94,16 @@ namespace FormsInterface
         public void getTrending(ListHolder list) 
         {
             _trendingList = list;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         // public string SearchDictionary(string item)
