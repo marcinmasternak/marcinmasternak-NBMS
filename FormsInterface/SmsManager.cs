@@ -15,12 +15,9 @@ namespace FormsInterface
     //SMS atributes: { type, header ,sender, content }
     class SmsManager : MessageManager
     {
-        List<string> MessageFields = new List<string> { "type", "header", "sender", "content" };
-        List<string> MessageFieldsLong = new List<string> { "Message type:         ", "\nMessage header:    ",
-                                                            "\nSender:                        ",
-                                                            "\n------------------------- Message Text ----------------------:\n\n" };
+
         // HERE it all starts
-        List<string> MessageContent = new List<string>();
+     
         public SmsManager(string _header, string _body, Form1 myForm)
         {
             Sms sms = new Sms();
@@ -29,8 +26,6 @@ namespace FormsInterface
              * 
              * */
             string message;
-            MessageContent.Add("SMS");                                                //<  ----- done
-            MessageContent.Add(_header.ToUpper());                                    //<  ----- done
             message = sms.SplitBody(_body);
             if (message != null)
             {
@@ -51,7 +46,6 @@ namespace FormsInterface
                     myForm.SendMessage("Error!\nInvalid message text length!\n" +
                                          "Must be between 1 and 140 characters.\n" +
                                          sms.Content.Length + " characters detected.");
-
                 }
             }
             
@@ -63,15 +57,7 @@ namespace FormsInterface
         }
 
       
-        public string PrintMessage(Sms sms)
-        {
-            string outputString = "";
-            outputString += "Message type:         " + sms.Type +
-                            "\n\nMessage header:    " + sms.Header +
-                            "\n\nSender:                        " + sms.Sender +
-                            "\n\n------------------------- Message Text ----------------------:\n\n" + sms.Content;
-            return outputString;
-        }
+        
 
         
         

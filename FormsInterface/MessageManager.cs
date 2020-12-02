@@ -9,11 +9,9 @@ namespace FormsInterface
 {
     public abstract class MessageManager
     {
-        //private string messageHeader;
-        //private string messageBody;
-        //private string messageType;
+       
         private static string headerErrorMessage = "Message header must be 10 characters long!\n" +
-                                            "It must start with type indicaotr letter [S,E,T] followed by 9 digits.";
+                                                    "It must start with type indicaotr letter [S,E,T] followed by 9 digits.";
         public MessageManager()
         {
            
@@ -37,10 +35,10 @@ namespace FormsInterface
                     SmsManager smsManager = new SmsManager(header, body, myForm);
                     break;
                 case "T":
-                    TweetManager tweetManager = new TweetManager(header, body, myForm);
+                    //TweetManager tweetManager = new TweetManager(header, body, myForm);
                     break;
                 case "E":
-                    EmailManager emailManager = new EmailManager(header, body, myForm);
+                   // EmailManager emailManager = new EmailManager(header, body, myForm);
                     break;
                 default:
                     return headerErrorMessage;
@@ -48,7 +46,7 @@ namespace FormsInterface
             return null;
         }
 
-        public abstract string[] SplitBody(string Body);
+
       
       
     }

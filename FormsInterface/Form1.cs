@@ -12,7 +12,7 @@ namespace FormsInterface
 {
     public partial class Form1 : Form
     {
-        TemplateGenerator template = new TemplateGenerator();
+        public TemplateGenerator template = new TemplateGenerator();
         public TextDictionary textDictionary = new TextDictionary();
 
         public Form1()
@@ -29,7 +29,7 @@ namespace FormsInterface
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace FormsInterface
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string message = MessageManager.CheckMessage(textBoxHeader.Text, textboxBody.Text, this);
+            string message = MessageManager1.CheckMessage(textBoxHeader.Text, textboxBody.Text, this);
             if (message != null) MessageBox.Show(message);
         }
 
@@ -79,6 +79,7 @@ namespace FormsInterface
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            this.Close();
             textBoxHeader.Clear();
             textboxBody.Clear();
             textBoxPreview.Clear();

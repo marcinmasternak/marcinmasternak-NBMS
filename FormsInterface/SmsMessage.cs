@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.Text.Json;
 
 namespace FormsInterface
 {
-    public class Sms
+    public class SmsMessage :Message
     {
-        public Sms()
+        public SmsMessage()
         {
         }
 
@@ -19,7 +20,7 @@ namespace FormsInterface
         public string Content { get; set; }
 
 
-        public string SplitBody(string body)
+        public override string SplitBody(string body)
         {
             var result = body.Split(new string[] { "Sender", "sender", "SENDER" }, 2, StringSplitOptions.None);
             if (result.Length < 2)
@@ -47,14 +48,14 @@ namespace FormsInterface
             {
                 sanitizedSender = sanitizedSender.TrimStart('0', '+');
                 sanitizedSender = sanitizedSender.Insert(2, " ");
-                sanitizedSender = sanitizedSender.Insert(0, "+");
+                //sanitizedSender = sanitizedSender.Insert(0, "");
                 Sender = sanitizedSender;
                 return true;
             }
             return false;
         }
 
-        public bool ValidateText()
+        public override bool ValidateText()
         {
             int length = Content.Length;
             if (length > 0 && length <= 140)
@@ -62,7 +63,7 @@ namespace FormsInterface
             return false;
         }
 
-        public string ExpandText(Form1 myForm)
+        public override string ExpandText(Form1 myForm)
         {
 
             var matches = Regex.Matches(Content, "<.{2,10}>");     //finds any occurance of text in  <   >  brackets
@@ -79,14 +80,21 @@ namespace FormsInterface
             return Content;
         }
 
-        public string PrintMessage()
+        public override string PrintMessage()
         {
             string outputString = "";
             outputString += "Message type:         " + Type +
                             "\n\nMessage header:    " + Header +
-                            "\n\nSender:                        " + Sender +
+                            "\n\nSender:                        +" + Sender +
                             "\n\n------------------------- Message Text ----------------------:\n\n" + Content;
             return outputString;
+        }
+
+        public override string SerializeToJson()
+         {
+            JsonSerializerOptions options = new JsonSerializerOptions();
+        options.WriteIndented = true;
+            return JsonSerializer.Serialize(this, options);
         }
     }
 
