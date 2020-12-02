@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.boxEntry = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textboxBody = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,7 +38,6 @@
             this.boxDisplay = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.textBoxPreview = new System.Windows.Forms.RichTextBox();
-            this.btnClear = new System.Windows.Forms.Button();
             this.boxEntry.SuspendLayout();
             this.boxDisplay.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +57,16 @@
             this.boxEntry.TabStop = false;
             this.boxEntry.Text = "Message Entry";
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(32, 537);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(82, 31);
+            this.btnClear.TabIndex = 5;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(347, 537);
@@ -75,6 +85,7 @@
             this.textboxBody.Size = new System.Drawing.Size(468, 374);
             this.textboxBody.TabIndex = 3;
             this.textboxBody.Text = "";
+            this.textboxBody.TextChanged += new System.EventHandler(this.textboxBody_TextChanged);
             // 
             // label2
             // 
@@ -134,16 +145,6 @@
             this.textBoxPreview.TabIndex = 0;
             this.textBoxPreview.Text = "";
             this.textBoxPreview.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(32, 537);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(82, 31);
-            this.btnClear.TabIndex = 5;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // Form1
             // 

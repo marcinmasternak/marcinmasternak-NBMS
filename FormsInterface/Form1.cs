@@ -14,12 +14,13 @@ namespace FormsInterface
     {
         public TemplateGenerator template = new TemplateGenerator();
         public TextDictionary textDictionary = new TextDictionary();
+        public TrendingList _trendingList;
 
-        public Form1()
+        public Form1(TrendingList trendingList)
         {
            
             InitializeComponent();
-            
+            _trendingList = trendingList;
         }
 
         private void boxDisplay_Enter(object sender, EventArgs e)
@@ -79,6 +80,7 @@ namespace FormsInterface
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            _trendingList.addHashTag("Test taaaaaaaaaaaaaaaaag  aaaaaaa aaaaaaaaaa ggggggggg");
             this.Close();
             textBoxHeader.Clear();
             textboxBody.Clear();
@@ -86,9 +88,19 @@ namespace FormsInterface
             template.oldType = "";
         }
 
-       // public string SearchDictionary(string item)
-       // {
-           // return textDictionary.SearchDict(item);
-       // }
+        private void textboxBody_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        public void getTrending(TrendingList list) 
+        {
+            _trendingList = list;
+        }
+
+        // public string SearchDictionary(string item)
+        // {
+        // return textDictionary.SearchDict(item);
+        // }
     }
 }

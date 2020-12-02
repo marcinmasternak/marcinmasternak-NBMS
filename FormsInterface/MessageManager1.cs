@@ -50,6 +50,7 @@ namespace FormsInterface
 
         static void CreateSms(string _header, string _body, Form1 myForm)
         {
+            
             SmsMessage sms = new SmsMessage();
             sms.Header = _header.ToUpper();
         
@@ -84,6 +85,7 @@ namespace FormsInterface
                                     " preceded by \"+\" sign or \"00\"" + " \nSMS sender :  " + sms.Sender);
 
         }
+       
 
        
 

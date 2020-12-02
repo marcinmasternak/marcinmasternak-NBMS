@@ -11,13 +11,21 @@ namespace FormsInterface
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form1 myForm = new Form1();
+
+            TrendingList trendingList = new TrendingList();
+            Form1 myForm = new Form1(trendingList);
+            //myForm.getTrending(trendingList);
+
             Application.Run(myForm);
+            Form2 myForm2 = new Form2(trendingList);
+            //myForm2.getTrending(trendingList);
+            Application.Run(myForm2);
             //Application.Run(new Form2());
 
 
