@@ -66,7 +66,7 @@ namespace FormsInterface
         public override string ExpandText(Form1 myForm)
         {
 
-            var matches = Regex.Matches(Content, "<.{2,10}>");     //finds any occurance of text in  <   >  brackets
+            var matches = Regex.Matches(Content, "<[A-Z]{2,10}>");     //finds any occurance of text in  <   >  brackets
             foreach (var match in matches)
             {
                 string item = match.ToString();
