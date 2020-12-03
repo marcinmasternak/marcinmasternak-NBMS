@@ -10,7 +10,7 @@ namespace FormsInterface
     {
         Dictionary<string, int> trendingDictionary = new Dictionary<string, int>();
         Dictionary<string, int> mentionsDictionary = new Dictionary<string, int>();
-
+        Dictionary<string, int> urlsDictionary = new Dictionary<string, int>();
         public ListHolder()
         {
             
@@ -38,6 +38,17 @@ namespace FormsInterface
             }
         }
 
+        public void addUrl(List<string> urlsList)
+        {
+            foreach (string url in urlsList)
+            {
+                if (urlsDictionary.ContainsKey(url))
+                    urlsDictionary[url]++;
+                else
+                    urlsDictionary[url] = 1;
+            }
+        }
+
         public List<string[]> getTrendingTags()
         {
             List<string[]> HashRowList = new List<string[]>();
@@ -62,6 +73,17 @@ namespace FormsInterface
             return MentionsRowList;
         }
 
+        public List<string[]> getUrls()
+        {
+            List<string[]> UrlsRowList = new List<string[]>();
+            foreach (KeyValuePair<string, int> urlsItem in urlsDictionary.OrderByDescending(key => key.Value))
+            {
+                UrlsRowList.Add(new string[2] { urlsItem.Key, urlsItem.Value.ToString() });
+                //= tagItem.Value +"   " + tagItem.Key +"\n";
+            }
+
+            return UrlsRowList;
+        }
 
 
 

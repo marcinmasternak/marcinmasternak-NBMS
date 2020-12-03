@@ -19,6 +19,7 @@ namespace FormsInterface
             _listHolder = listHolder;
             fillTrendingList();
             fillMentionsList();
+            fillUrlsList();
            
 
         }
@@ -79,6 +80,19 @@ namespace FormsInterface
             var row = new String[2];
             foreach (var item in _listHolder.getMentions())
                 listView2.Items.Add(new ListViewItem(item));
+        }
+
+        public void fillUrlsList()
+        {
+            //listBox1.Items.Add(_trendingList.getItems());
+            //richTextBox1.Text += _trendingList.getItems() + "\n";
+            var row = new String[2];
+            foreach (var item in _listHolder.getUrls())
+                listView3.Items.Add(new ListViewItem(item));
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

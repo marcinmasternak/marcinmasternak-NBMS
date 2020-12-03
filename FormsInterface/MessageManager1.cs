@@ -40,7 +40,7 @@ namespace FormsInterface
                     CreateTweet(header, body, myForm);
                     break;
                 case "E":
-                    // EmailManager emailManager = new EmailManager(header, body, myForm);
+                    CreateEmail(header, body, myForm);
                     break;
                 default:
                     return headerErrorMessage;
@@ -63,10 +63,8 @@ namespace FormsInterface
             }
             if (sms.ValidateSender() == true)
             {
-                myForm.SendMessage("This is the validated sender from sms object: " + sms.Sender);
                 if (sms.ValidateText() == true)
                 {
-                    myForm.SendMessage("Length succesfully validated : " + sms.Content.Length);
                     sms.ExpandText(myForm);
                     myForm.UpdateTextBox(sms.PrintMessage());
                     System.IO.File.AppendAllText("my_json_file.txt", sms.SerializeToJson());
@@ -101,10 +99,8 @@ namespace FormsInterface
             }
             if (tweet.ValidateSender() == true)
             {
-                myForm.SendMessage("This is the validated sender from sms object: " + tweet.Sender);
                 if (tweet.ValidateText() == true)
                 {
-                    myForm.SendMessage("Length succesfully validated : " + tweet.Content.Length);
                     tweet.ExpandText(myForm);
                     myForm.UpdateTextBox(tweet.PrintMessage());
                     System.IO.File.AppendAllText("my_json_file.txt", tweet.SerializeToJson());
@@ -122,6 +118,46 @@ namespace FormsInterface
             else
                 myForm.SendMessage("Error!\nInvalid Sender / Tweeter ID format!\n" +
                                     "ID must start with \"@\" followed by 4 to 15 alphanumeric characters");
+
+        }
+
+        static void CreateEmail(string _email, string _body, Form1 myForm)
+        {
+
+            EmailMessage email = new EmailMessage();
+            email.Header = _email.ToUpper();
+
+            string message;
+            message = email.SplitBody(_body);
+            if (message != null)
+            {
+                myForm.SendMessage(message);
+                return;
+            }
+            if (email.ValidateSender() == true)
+            {
+                if (email.ValidateSubject() == true)
+                {
+                    if (email.ValidateText() == true)
+                    {
+                        email.ExpandText(myForm);
+                        myForm._listHolder.addUrl(email.FindUrl());
+                        myForm.UpdateTextBox(email.PrintMessage());
+                        System.IO.File.AppendAllText("my_json_file.txt", email.SerializeToJson());
+                    }
+                    else
+                    {
+                        myForm.SendMessage("Error!\nInvalid message text length!\n" +
+                                             "Must be between 1 and 1028 characters.\n" +
+                                             email.Content.Length + " characters detected.");
+                    }
+                }
+                else
+                    myForm.SendMessage("Error!\nInvalid subject length.\n Must be 1 to 20 characters!\n [ Detected "+  email.Subject.Length +"]");
+            }
+
+            else
+                myForm.SendMessage("Error!\nInvalid Sender / e-mail address format!\n");
 
         }
 
